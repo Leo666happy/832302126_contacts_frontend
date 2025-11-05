@@ -1,44 +1,103 @@
-# vue-project
+# Contacts Frontend (Vue 3)
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern, responsive contact management frontend built with Vue 3—seamlessly integrated with the FastAPI backend for full contact CRUD, search, and avatar upload functionality.
 
-## Recommended IDE Setup
+## Features
+- Clean, intuitive UI for contact management
+- Real-time data sync with backend API
+- Contact search (by name/phone)
+- Avatar upload & preview
+- Responsive design (works on mobile/desktop)
+- Form validation for contact data
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tech Stack
+| Technology       | Version Requirement | Description                  |
+|------------------|---------------------|------------------------------|
+| Vue.js           | 3.2+                | Core frontend framework      |
+| Vite             | 4.0+                | Build tool (fast dev/hot-reload) |
+| Axios            | 1.0+                | HTTP client for API calls    |
+| CSS3/Tailwind CSS| -                   | Styling (responsive design)  |
+| Vue Router       | 4.0+                | Frontend routing             |
 
-## Recommended Browser Setup
+## Project Structure
+```
+frontend/
+├── public/              # Static assets (favicon, etc.)
+├── src/
+│   ├── assets/          # CSS, images, icons
+│   ├── components/      # Reusable components (ContactCard, Form, etc.)
+│   ├── views/           # Page views (ContactList, ContactDetail, etc.)
+│   ├── router/          # Routing configuration
+│   ├── utils/
+│   │   └── request.js   # Axios setup (API base URL, interceptors)
+│   ├── App.vue          # Root component
+│   └── main.js          # Entry point
+├── package.json         # Dependencies & scripts
+└── README.md            # Frontend documentation
+```
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Quick Start (Local Development)
 
-## Customize configuration
+### 1. Prerequisites
+- Node.js 16+ (https://nodejs.org/en/download/)
+- npm/yarn (included with Node.js)
+- Backend API running locally (see backend README)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
+### 2. Clone & Setup
+```bash
+# Install dependencies
 npm install
+# Or with yarn: yarn install
 ```
 
-### Compile and Hot-Reload for Development
+### 3. Configure Backend API URL
+Update the backend base URL in `src/utils/request.js`:
+```javascript
+// src/utils/request.js
+import axios from 'axios';
 
-```sh
+const service = axios.create({
+  baseURL: 'http://localhost:8000/api', // Match backend API base URL
+  timeout: 5000
+});
+
+export default service;
+```
+
+### 4. Run Dev Server
+```bash
 npm run dev
+# Or with yarn: yarn dev
 ```
 
-### Compile and Minify for Production
+### 5. Access Frontend
+Open your browser and visit:  
+`http://localhost:5173` (default Vite dev server port)
 
-```sh
+## Core Functions
+- **Contact List**: View all contacts with pagination
+- **Search**: Find contacts by name or phone number
+- **Add Contact**: Create new contact with optional avatar upload
+- **Edit Contact**: Update existing contact details/avatar
+- **Delete Contact**: Remove contacts (with confirmation)
+
+## Build for Production
+To generate static files for deployment (e.g., on Nginx/Netlify/Vercel):
+```bash
 npm run build
+# Or with yarn: yarn build
 ```
+Static files will be output to the `dist` folder.
 
-### Lint with [ESLint](https://eslint.org/)
+## Notes
+- Ensure the backend API is running before starting the frontend
+- For CORS issues: Verify backend CORS configuration allows `http://localhost:5173`
+- Avatar uploads require the backend `static/avatars` folder (auto-created by backend)
 
-```sh
-npm run lint
-```
+---
+
+### Combined Frontend + Backend Quick Start (Bonus)
+For local development with both services running:
+1. Start backend (per backend README): `uvicorn main:app --reload`
+2. Start frontend: `npm run dev`
+3. Access frontend at `http://localhost:5173` and test all features!
