@@ -70,10 +70,6 @@ npm run dev
 # Or with yarn: yarn dev
 ```
 
-### 5. Access Frontend
-Open your browser and visit:  
-`http://localhost:5173` (default Vite dev server port)
-
 ## Core Functions
 - **Contact List**: View all contacts with pagination
 - **Search**: Find contacts by name or phone number
@@ -100,4 +96,3 @@ Static files will be output to the `dist` folder.
 For local development with both services running:
 1. Start backend (per backend README): `uvicorn main:app --reload`
 2. Start frontend: `npm run dev`
-3. Access frontend at `http://localhost:5173` and test all features!
