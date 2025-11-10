@@ -41,7 +41,7 @@ frontend/
 ### 1. Prerequisites
 - Node.js 16+ (https://nodejs.org/en/download/)
 - npm/yarn (included with Node.js)
-- Backend API running locally (see backend README)
+- Backend API running on the server (see backend README)
 
 ### 2. Clone & Setup
 ```bash
@@ -57,7 +57,7 @@ Update the backend base URL in `src/utils/request.js`:
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: 'http://localhost:8000/api', // Match backend API base URL
+  baseURL: 'http://Server IP:8000/api', // Match backend API base URL
   timeout: 5000
 });
 
@@ -87,7 +87,7 @@ Static files will be output to the `dist` folder.
 
 ## Notes
 - Ensure the backend API is running before starting the frontend
-- For CORS issues: Verify backend CORS configuration allows `http://localhost:5173`
+- For CORS issues: Verify backend CORS configuration allows `http://Server IP:8000`
 - Avatar uploads require the backend `static/avatars` folder (auto-created by backend)
 
 ---
